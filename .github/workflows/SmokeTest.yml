@@ -27,12 +27,8 @@ jobs:
     - name: Start API
       run: |
         nohup node index.js > server.log 2>&1 &
-        sleep 3
+        sleep 10
         cat server.log
-    
-    - name: Wait for API to be ready
-      run: |
-        npx wait-on http://localhost:3000
 
     - name: Run k6 smoke test
       uses: grafana/k6-action@v0.2.0
