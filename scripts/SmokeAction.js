@@ -25,6 +25,6 @@ export default function () {
 
   // Agrega una verificación de que el código sea 200 para el log
   check(res, {
-    'response code was 200': (res) => res.status == 200,
+    'response code was 201': (res) => res.status == 201,
   });
 }
