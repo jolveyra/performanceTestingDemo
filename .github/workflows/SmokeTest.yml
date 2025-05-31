@@ -14,6 +14,19 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Start API server
+      run: |
+        nohup node index.js > server.log 2>&1 &
+        sleep 5  # tiempo para que el servidor se inicie
+
     - name: Run k6 smoke test
       uses: grafana/k6-action@v0.2.0
       with:
