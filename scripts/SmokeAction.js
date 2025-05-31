@@ -2,9 +2,12 @@
 import http from 'k6/http';
 import { check } from 'k6';
 
+export const RateCreatedOK = new Rate('CreatedOk');
 export const options = {
-    iterations: 10, // Define el número de iteraciones que se ejecutaránthresholds: {
-    'checks': ['rate==1'],
+    iterations: 10, // Define el número de iteraciones que se ejecutarán thresholds: 
+    thresholds: {
+        RateCreatedOK: [{ threshold: 'rate>1', abortOnFail: true }],
+    },
 };
 
 export default function () {
@@ -25,11 +28,9 @@ export default function () {
     const res = http.post(url, payload, params);
 
     // Agrega una verificación de que el código sea 200 para el log
-    const succes = check(res, {
+    const success = check(res, {
         'response code was 201': (res) => res.status == 200,
     });
 
-    if (!success) {
-        fail('Al menos un check falló, abortando ejecución');
-    }
+    RateContentOK.add(success);
 }
