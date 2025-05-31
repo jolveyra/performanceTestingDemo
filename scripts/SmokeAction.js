@@ -3,7 +3,8 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 export const options = {
-    iterations: 10, // Define el número de iteraciones que se ejecutarán
+    iterations: 10, // Define el número de iteraciones que se ejecutaránthresholds: {
+    checks: ['rate==1'],
 };
 
 export default function () {
