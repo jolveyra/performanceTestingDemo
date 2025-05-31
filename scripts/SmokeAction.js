@@ -4,7 +4,7 @@ import { check } from 'k6';
 
 export const options = {
     iterations: 10, // Define el número de iteraciones que se ejecutaránthresholds: {
-    checks: ['rate==1'],
+    'checks': ['rate==1'],
 };
 
 export default function () {
