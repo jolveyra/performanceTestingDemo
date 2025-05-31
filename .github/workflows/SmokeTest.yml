@@ -2,16 +2,16 @@ name: Run k6 Smoke Test
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  k6-smoke-test:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Set up Node.js
@@ -22,10 +22,13 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Start API server
+    - name: Install wait-on
+      run: npm install -g wait-on
+
+    - name: Start API
       run: |
-        nohup node index.js > server.log 2>&1 &
-        sleep 5  # tiempo para que el servidor se inicie
+        node index.js &
+        wait-on http://localhost:3000
 
     - name: Run k6 smoke test
       uses: grafana/k6-action@v0.2.0
