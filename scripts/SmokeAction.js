@@ -7,7 +7,7 @@ export const RateCreatedOK = new Rate('CreatedOk');
 export const options = {
     iterations: 10, // Define el número de iteraciones que se ejecutarán thresholds: 
     thresholds: {
-        CreatedOk: [{ threshold: 'rate>1', abortOnFail: true }],
+        CreatedOk: [{ threshold: 'rate>0.99', abortOnFail: true }],
     },
 };
 
