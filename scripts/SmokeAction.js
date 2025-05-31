@@ -1,5 +1,6 @@
 // import necessary module
 import http from 'k6/http';
+import { Rate } from 'k6/metrics';
 import { check } from 'k6';
 
 export const RateCreatedOK = new Rate('CreatedOk');
