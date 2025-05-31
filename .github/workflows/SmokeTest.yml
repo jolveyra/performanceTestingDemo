@@ -17,4 +17,4 @@ jobs:
     - name: Run k6 smoke test
       uses: grafana/k6-action@v0.2.0
       with:
-        filename: ./scripts/test3.js
+        filename: ./scripts/TestSmoke.js
