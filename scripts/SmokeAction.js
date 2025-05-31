@@ -33,5 +33,5 @@ export default function () {
         'response code was 201': (res) => res.status == 200,
     });
 
-    RateContentOK.add(success);
+    RateCreatedOK.add(success);
 }
