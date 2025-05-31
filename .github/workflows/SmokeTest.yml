@@ -24,11 +24,14 @@ jobs:
 
     - name: Install wait-on
       run: npm install -g wait-on
-
     - name: Start API
       run: |
-        node index.js
-
+        nohup node index.js > server.log 2>&1 &
+    
+    - name: Wait for API to be ready
+      run: |
+        npx wait-on http://localhost:3000
+        
     - name: Run k6 smoke test
       uses: grafana/k6-action@v0.2.0
       with:
