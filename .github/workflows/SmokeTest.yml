@@ -28,7 +28,6 @@ jobs:
     - name: Start API
       run: |
         node index.js
-        npx wait-on http://localhost:3000/tasks
 
     - name: Run k6 smoke test
       uses: grafana/k6-action@v0.2.0
