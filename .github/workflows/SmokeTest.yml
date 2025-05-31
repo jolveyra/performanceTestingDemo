@@ -31,11 +31,14 @@ jobs:
         cat server.log
 
     - name: Install K6
-      run: sudo apt-get update && sudo apt-get install -y gnupg software-properties-common && \
-          curl -s https://dl.k6.io/key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/k6-archive-keyring.gpg && \
-          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | \
-          sudo tee /etc/apt/sources.list.d/k6.list && \
-          sudo apt-get update && sudo apt-get install -y k6
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y curl gnupg software-properties-common
+        curl -s https://dl.k6.io/key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/k6-archive-keyring.gpg
+        echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | \
+          sudo tee /etc/apt/sources.list.d/k6.list
+        sudo apt-get update
+        sudo apt-get install -y k6
 
     - name: Run k6 smoke test
       run: k6 run ./scripts/SmokeAction.js
