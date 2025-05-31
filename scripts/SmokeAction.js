@@ -10,8 +10,8 @@ export default function () {
   // define URL and payload
   const url = 'http://localhost:3000/tasks';
   const payload = JSON.stringify({
-    username: 'default',
-    password: '12345678',
+    title: 'default',
+    description: '12345678',
   });
 
   const params = {
