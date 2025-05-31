@@ -16,12 +16,12 @@ app.post('/tasks', (req, res) => {
     }
 
     const newTask = {
-        id: Date.now(), 
+        id: Date.now(),
         title,
         description: description || '',
     };
 
-
+    console.log('New task created:', newTask);
     return res.status(201).json({ message: 'Task created successfully', task: newTask });
 });
 
