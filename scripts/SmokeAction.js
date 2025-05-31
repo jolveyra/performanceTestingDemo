@@ -8,7 +8,7 @@ export const options = {
 
 export default function () {
   // define URL and payload
-  const url = 'http://host.docker.internal:3000/tasks';
+  const url = 'http://localhost:3000/tasks';
   const payload = JSON.stringify({
     username: 'default',
     password: '12345678',
