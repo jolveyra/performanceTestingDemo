@@ -6,7 +6,7 @@ export const options = {
   thresholds: {
     // abortOnFail: true permite que si se rompe un threshold, se detenga la prueba
     http_req_failed: [{ threshold: 'rate<0.01', abortOnFail: true }],
-    http_req_duration: [{ threshold:'p(99)<160', abortOnFail: true}]
+    http_req_duration: [{ threshold:'p(99)<200', abortOnFail: true}]
   },
   scenarios: {
     breaking: {

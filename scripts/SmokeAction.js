@@ -1,4 +1,4 @@
-// import necessary module
+// Módulos necesarios
 import http from 'k6/http';
 import { Rate } from 'k6/metrics';
 import { check } from 'k6';
@@ -12,7 +12,7 @@ export const options = {
 };
 
 export default function () {
-    // define URL and payload
+    // Definir URL donde vamos a ejecutar y el payload que vamos a enviar
     const url = 'http://localhost:3000/tasks';
     const payload = JSON.stringify({
         title: 'default',
