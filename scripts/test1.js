@@ -15,6 +15,8 @@ export default function () {
         headers: { 'Content-Type': 'application/json' },
     });
 
+    // Agrega una verificación de que el código sea 201 - esto crea automaticamente una metrica para el test
+    // si no se verifica el test, se loguea pero el test no falla
     check(res, {
         'status es 201': (r) => r.status === 201,
     });

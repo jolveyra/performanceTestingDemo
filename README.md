@@ -28,3 +28,6 @@ Ejemplo:
 
 ## Análisis de resultados:
 `https://grafana.com/docs/k6/latest/examples/get-started-with-k6/analyze-results/`
+
+## Métricas:
+`https://grafana.com/docs/k6/next/using-k6/metrics/`

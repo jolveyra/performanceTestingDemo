@@ -1,18 +1,17 @@
-// Módulos necesarios
 import http from 'k6/http';
 import { Rate } from 'k6/metrics';
 import { check } from 'k6';
 
+// Metrica custom para el rate de respuestas exitosas
 export const RateCreatedOK = new Rate('CreatedOk');
 export const options = {
-    iterations: 10, // Define el número de iteraciones que se ejecutarán thresholds: 
+    iterations: 10,
     thresholds: {
         CreatedOk: [{ threshold: 'rate>0.99', abortOnFail: true }],
     },
 };
 
 export default function () {
-    // Definir URL donde vamos a ejecutar y el payload que vamos a enviar
     const url = 'http://localhost:3000/tasks';
     const payload = JSON.stringify({
         title: 'default',
@@ -25,13 +24,12 @@ export default function () {
         },
     };
 
-    // send a post request and save response as a variable
     const res = http.post(url, payload, params);
 
-    // Agrega una verificación de que el código sea 201 para el log
     const success = check(res, {
         'response code was 201': (res) => res.status == 201,
     });
 
+    // si se verifica el check, se agrega a la métrica de rate
     RateCreatedOK.add(success);
 }
