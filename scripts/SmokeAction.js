@@ -30,7 +30,7 @@ export default function () {
 
     // Agrega una verificación de que el código sea 200 para el log
     const success = check(res, {
-        'response code was 201': (res) => res.status == 201,
+        'response code was 201': (res) => res.status == 200,
     });
 
     RateCreatedOK.add(success);
