@@ -28,9 +28,9 @@ export default function () {
     // send a post request and save response as a variable
     const res = http.post(url, payload, params);
 
-    // Agrega una verificación de que el código sea 200 para el log
+    // Agrega una verificación de que el código sea 201 para el log
     const success = check(res, {
-        'response code was 200': (res) => res.status == 200,
+        'response code was 201': (res) => res.status == 201,
     });
 
     RateCreatedOK.add(success);
