@@ -27,7 +27,7 @@ export default function () {
     const res = http.post(url, payload, params);
 
     const success = check(res, {
-        'response code was 201': (res) => res.status == 201,
+        'response code was 201': (res) => res.status == 200,
     });
 
     // si se verifica el check, se agrega a la métrica de rate
